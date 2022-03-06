@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="index.js"></script>
+    <title>Frontend Mentor | Tip calculator app</title>
+
+
+</head>
+
+<body>
+    <h1>
+        SPLI <br> TTER
+    </h1>
+    <main class="box">
+        <div class="box-info">
+            <div class="header">
+
+                <h2>Bill</h2>
+                <!-- <img src="./images/icon-dollar.svg" alt="dollar icon"> -->
+                <input type="text" id="bill" placeholder="0">
+            </div>
+
+            <div class="select-tip">
+
+                <h2>Select Tip %</h2>
+                <div class="grid-btn">
+
+                    <button>5%</button>
+                    <button>10%</button>
+                    <button class="active">15%</button>
+                    <button>25%</button>
+                    <button>50%</button>
+                    <input type="text" id="custom" placeholder="Custom">
+                </div>
+            </div>
+            <div class="people">
+                <div class="people-headings">
+
+                    <h2>Number of People</h2>
+                    <h2 hiddenheading="true" class="zero" style="color: rgb(232, 156, 16);"> Can't be zero</h2>
+                </div>
+                <!-- <img src="./images/icon-person.svg" alt="person icon"> -->
+                <input type="text" id="people1" placeholder="0">
+
+            </div>
+        </div>
+        <div class="subbox">
+            <div>
+
+                <div class="subbox1">
+                    <div>
+
+                        <h2>Tip Amount</h2>
+                        <p>/ person</p>
+                    </div>
+                    <span>$<span id="first">0.00</span> </span>
+                </div>
+                <div class="subbox1">
+
+                    <div>
+
+                        <h2>Total</h2>
+                        <p>/ person</p>
+                    </div>
+                    <span>$<span id="second">0.00</span> </span>
+                </div>
+            </div>
+            <button peoplezero="true">RESET</button>
+        </div>
+    </main>
+</body>
+
+</html>
