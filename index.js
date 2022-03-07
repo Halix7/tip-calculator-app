@@ -27,30 +27,43 @@ function activeLink() {
 btnfive.forEach((item) => {
     item.addEventListener('click', activeLink);
     // console.log(item.innerHTML);
+    item.addEventListener('click', () => {
+        if (isNaN(btnvalue)) {
+            tip = ((bill.value / people.value) / 100) * parseInt(custom.value);
+        } else {
 
+            tip = ((bill.value / people.value) / 100) * btnvalue;
+        }
+        total.innerHTML = parseInt(tip) + parseInt(bill.value);
+        tipamount.innerHTML = parseInt(tip);
+    })
 
 
 });
-bill.addEventListener("change", () => {
-    if (isNaN(btnvalue)) {
-        tip = ((bill.value / people.value) / 100) * parseInt(custom.value);
+custom.addEventListener('input', () => {
+    if (people.value <= 0 || custom.value <= 0 || bill.value <= 0) {
+        tipamount.innerHTML = total.innerHTML = "0.00";
+
     } else {
 
-        tip = ((bill.value / people.value) / 100) * btnvalue;
-    }
-    total.innerHTML = parseInt(tip) + parseInt(bill.value);
-    tipamount.innerHTML = parseInt(tip);
 
+        if (isNaN(btnvalue)) {
+            tip = ((bill.value / people.value) / 100) * parseInt(custom.value);
+        } else {
+
+            tip = ((bill.value / people.value) / 100) * btnvalue;
+        }
+        total.innerHTML = parseInt(tip) + parseInt(bill.value);
+        tipamount.innerHTML = parseInt(tip);
+
+    }
 })
 
-people.oninput = function() {
-    if (people.value == 0) {
-
-        h2.setAttribute("hiddenheading", "false");
+bill.addEventListener("input", () => {
+    if (people.value <= 0 || custom.value <= 0 || bill.value <= 0) {
+        tipamount.innerHTML = total.innerHTML = "0.00";
 
     } else {
-        reset.setAttribute("peoplezero", "false");
-        h2.setAttribute("hiddenheading", "true");
 
         if (isNaN(btnvalue)) {
             tip = ((bill.value / people.value) / 100) * parseInt(custom.value);
@@ -62,10 +75,34 @@ people.oninput = function() {
         tipamount.innerHTML = parseInt(tip);
     }
 
+})
+
+people.oninput = function() {
+    if (people.value == 0) {
+
+        h2.setAttribute("hiddenheading", "false");
+
+    } else if (people.value <= 0 || custom.value <= 0 || bill.value <= 0) {
+        tipamount.innerHTML = total.innerHTML = "0.00";
+
+    } else {
+        reset.setAttribute("peoplezero", "false");
+        h2.setAttribute("hiddenheading", "true");
+
+        if (isNaN(btnvalue)) {
+            tip = ((bill.value / 100) * people.value) * parseInt(custom.value);
+        } else {
+
+            tip = ((bill.value / people.value) / 100) * btnvalue;
+        }
+        total.innerHTML = parseInt(tip) + parseInt(bill.value);
+        tipamount.innerHTML = parseInt(tip);
+    }
+
 
 };
 reset.addEventListener('click', () => {
-    people.value = ""
-    bill.value = ""
+    people.value = bill.value = custom.value = null;
+    tipamount.innerHTML = total.innerHTML = "0.00";
 
 })
